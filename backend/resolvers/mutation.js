@@ -74,6 +74,9 @@ export const Mutation = {
 
   createPost: async (parent, args, context, info) => {
     const { id } = auth(context);
+    if (args.body.trim() === '') {
+      throw new UserInputError('Empty post');
+    }
     const post = await context.db.Post.create({
       body: args.body,
       author: id,

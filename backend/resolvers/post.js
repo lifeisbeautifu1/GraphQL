@@ -14,4 +14,11 @@ export const Post = {
       },
     });
   },
+  likesCount: (parent, args, context, info) => {
+    console.log(parent.likes);
+    return parent.likes.length;
+  },
+  commentsCount: (parent, args, context, info) => {
+    return parent.comments.length;
+  },
 };

@@ -20,8 +20,10 @@ export const typeDefs = gql`
     author: User!
     body: String!
     likes: [User]!
+    likesCount: Int!
     createdAt: String!
     comments: [Comment]!
+    commentsCount: Int!
   }
 
   type Comment {
