@@ -5,6 +5,7 @@ import { resolvers } from './resolvers/index.js';
 
 import User from './models/user.js';
 import Post from './models/post.js';
+import Comment from './models/comment.js';
 
 import 'dotenv/config';
 import 'colors';
@@ -18,6 +19,7 @@ const server = new ApolloServer({
       db: {
         User,
         Post,
+        Comment,
       },
     };
   },

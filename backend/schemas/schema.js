@@ -2,9 +2,9 @@ import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Query {
-    users: [User!]!
+    users: [User]!
     user(id: ID!): User
-    posts: [Post!]!
+    posts: [Post]!
     post(id: ID!): Post
   }
 
@@ -19,21 +19,26 @@ export const typeDefs = gql`
     id: ID!
     author: User!
     body: String!
-    likes: [User!]!
-    comments: [Comment!]!
+    likes: [User]!
+    createdAt: String!
+    comments: [Comment]!
   }
 
   type Comment {
     id: ID!
     body: String!
     author: User!
+    createdAt: String!
   }
 
   type Mutation {
     register(input: RegisterInput!): User!
     login(input: LoginInput!): User!
     createPost(body: String!): Post!
-    deletePost(id: ID!): Post!
+    deletePost(postId: ID!): Boolean!
+    createComment(postId: ID!, body: String!): Post!
+    deleteComment(postId: ID!, commentId: ID!): Post!
+    likePost(postId: ID!): Post!
   }
 
   input RegisterInput {
