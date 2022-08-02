@@ -1,17 +1,26 @@
 import { ApolloServer } from 'apollo-server';
 import { connectDB } from './db/connectDB.js';
 import { typeDefs } from './schemas/schema.js';
-import { Query } from './resolvers/index.js';
+import { resolvers } from './resolvers/index.js';
+
+import User from './models/user.js';
+import Post from './models/post.js';
+
 import 'dotenv/config';
 import 'colors';
-
-const resolvers = {
-  Query,
-};
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => {
+    return {
+      req,
+      db: {
+        User,
+        Post,
+      },
+    };
+  },
 });
 
 const PORT = process.env.PORT || 5000;
