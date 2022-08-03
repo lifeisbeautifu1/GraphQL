@@ -1,1 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.active {
+    border-bottom: 3px solid rgb(96 165 250 / 1);
+    color: rgb(96 165 250 / 1);
+    margin-bottom: -3px;
+}
+
+
 

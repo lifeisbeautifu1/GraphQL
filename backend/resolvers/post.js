@@ -5,7 +5,7 @@ export const Post = {
   comments: async (parent, args, context, info) => {
     return await context.db.Comment.find({
       post: parent.id,
-    });
+    }).sort({createdAt: -1});
   },
   likes: async (parent, args, context, info) => {
     return await context.db.User.find({
@@ -15,7 +15,6 @@ export const Post = {
     });
   },
   likesCount: (parent, args, context, info) => {
-    console.log(parent.likes);
     return parent.likes.length;
   },
   commentsCount: (parent, args, context, info) => {
