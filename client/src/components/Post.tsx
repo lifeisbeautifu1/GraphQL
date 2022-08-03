@@ -1,10 +1,9 @@
 import { IPost } from '../interfaces';
-import { FaComments } from 'react-icons/fa';
+
 import { formatDistanceToNow } from 'date-fns';
-import { DeleteButton, LikeButton } from './';
+import { DeleteButton, LikeButton, CommentsButton } from './';
 import { useAppSelector } from '../hooks';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 interface PostProps {
   post: IPost;
@@ -43,16 +42,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
         </div>
         <div className="flex items-center gap-2">
           <LikeButton post={post} />
-          <Link to={`/posts/${post.id}`}>
-            <button className="text-blue-500 text-lg flex items-center border rounded border-blue-500 hover:border-[1.5px] transition duration-300">
-              <span className="py-2 pl-4 pr-8 ">
-                <FaComments className="text-blue-500 transition duration-300 hover:scale-125" />
-              </span>
-              <span className="p-2 px-3 leading-[18px] border-l border-blue-500   ">
-                {post.commentsCount}
-              </span>
-            </button>
-          </Link>
+          <CommentsButton post={post} />
           {user && post.author.id === user.id && <DeleteButton post={post} />}
         </div>
       </div>

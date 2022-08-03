@@ -30,7 +30,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ post }) => {
       onClick={() => {
         user ? likePost() : navigate('/login');
       }}
-      className={`text-teal-500 text-lg flex items-center border border-teal-500 transition duration-200 hover:border-[1.5px] rounded ${
+      className={`text-teal-500 text-lg flex items-center border border-teal-500 transition duration-200 hover:border-[1.5px] rounded peer relative ${
         isLiked ? 'bg-teal-500' : 'bg-white'
       }`}
     >
@@ -42,13 +42,16 @@ const LikeButton: React.FC<LikeButtonProps> = ({ post }) => {
         />
       </span>
       <span
-        className={`p-2 px-3  border border-l-teal-500 leading-[18px] ${
+        className={`p-2 px-3  border-l border-l-teal-500 leading-[18px] ${
           isLiked
             ? 'text-white border-teal-500 border-l-white'
             : 'text-teal-500 '
         }`}
       >
         {post.likesCount}
+      </span>
+      <span className="text-xs text-gray-600 absolute  right-6 -top-10 p-2 rounded  bg-gray-100 invisible tooltip-text ">
+        Like Post
       </span>
     </button>
   );

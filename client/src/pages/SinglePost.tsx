@@ -11,8 +11,7 @@ import {
 } from '../interfaces';
 import { GET_POST } from '../queries/postQueries';
 import { CREATE_COMMENT } from '../mutations/postMutations';
-import { LikeButton, DeleteButton } from '../components';
-import { FaComments } from 'react-icons/fa';
+import { LikeButton, DeleteButton, CommentsButton } from '../components';
 import { formatDistanceToNow } from 'date-fns';
 
 const SinglePost = () => {
@@ -77,14 +76,7 @@ const SinglePost = () => {
             </div>
             <div className="flex items-center gap-2">
               <LikeButton post={post} />
-              <div className="text-blue-500 text-lg flex items-center border rounded border-blue-500 hover:border-[1.5px] transition duration-300">
-                <button className="py-2 pl-4 pr-8 ">
-                  <FaComments className="text-blue-500 transition duration-300 hover:scale-125" />
-                </button>
-                <button className="p-2 px-3 leading-[18px] border-l border-blue-500   ">
-                  {post.commentsCount}
-                </button>
-              </div>
+              <CommentsButton post={post} />
               {user && post.author.id === user.id && (
                 <DeleteButton post={post} callback={callback} />
               )}

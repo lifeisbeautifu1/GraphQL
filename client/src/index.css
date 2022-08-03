@@ -12,5 +12,27 @@
     margin-bottom: -3px;
 }
 
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(243 244 246 / 1) transparent transparent transparent;
+}
+
+
+.peer:hover > .tooltip-text,
+.delete-btn:hover > .tooltip-text,
+.comment:hover > .tooltip-text {
+    visibility: visible;
+}
+
+
+
+
+
 
 

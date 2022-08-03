@@ -35,10 +35,13 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
   });
   return (
     <button
-      className="ml-auto bg-red-500 hover:bg-red-500/90 text-white p-2 rounded shadow"
+      className="ml-auto bg-red-500 hover:bg-red-500/90 text-white p-2 rounded shadow relative delete-btn"
       onClick={() => deletePostOrComment()}
     >
       <FaTrash />
+      <span className=" text-xs text-gray-600 absolute  -right-2 -top-11 p-2 rounded  bg-gray-100 invisible tooltip-text">
+        Delete
+      </span>
     </button>
   );
 };
